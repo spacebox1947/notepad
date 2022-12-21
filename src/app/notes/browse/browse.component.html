@@ -1,0 +1,14 @@
+<h1>Note Browser</h1>
+
+<div>
+    <ul>
+        <li *ngFor="let note of notes">
+            <h3>{{note.title}}</h3>
+            <i>{{note.date}}</i>
+            <p>{{note.body}}</p>
+        </li>
+    </ul>
+
+</div>
+
+<app-compose></app-compose>
