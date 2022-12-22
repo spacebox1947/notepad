@@ -7,6 +7,8 @@ import { BrowseComponent } from './browse/browse.component';
 
 import { NotesService } from './notes.service';
 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { NotesService } from './notes.service';
   ],
   imports: [
     CommonModule,
-    NotesRoutingModule
+    NotesRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class NotesModule { }

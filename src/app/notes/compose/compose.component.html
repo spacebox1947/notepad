@@ -1,13 +1,20 @@
 <h1>Compose a Beautiful Note!</h1>
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <label for="title">Title</label>
+    <input formControlName="title" id="title" placehoder="Title for Note..." type="text"/>
 
-<label for="title">Title</label>
-<input id="title" placehoder="Title for Note..." type="text"/>
+    <label for="date">Date</label>
+    <input formControlName="date" id="date" placehoder="DD-MM-YY"/>
 
-<label for="date">Date</label>
-<input id="date" placehoder="DD-MM-YY"/>
+    <label for="body">My Note</label>
+    <textarea id="body" rows="6" cols="100"
+        formControlName="body"
+        placeholder="Your is a grate writer!"></textarea>
 
-<label for="body">My Note</label>
-<textarea id="body" rows="6" cols="100"
-    placeholder="Your is a grate writer!"></textarea>
+    <button id="submitter" [disabled]="noteForm.invalid" type="submit">Submit Epic Writing</button>
+</form>
 
-<button id="submitter" (click)="onSubmit()">Submit Epic Writing</button>
+<hr />
+<p>Values: {{ noteForm.value | json }}</p>
+<p>Errors: {{ noteForm.errors | json }}</p>
+<p>Valid: {{ noteForm.valid | json }}</p>
