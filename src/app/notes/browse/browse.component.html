@@ -1,14 +1,24 @@
 <h1>Note Browser</h1>
-
 <div>
     <ul>
+        <div *ngIf="displayingNote===false">
         <li *ngFor="let note of notes">
-            <h3>{{note.title}}</h3>
-            <i>{{note.date}}</i>
-            <p>{{note.body}}</p>
+            <a routerLink="display/{{note.id}}">{{note.title}}</a>
+        </li>
+        </div>
+        <li>
+            <a routerLink="compose">Compose New Note</a>
         </li>
     </ul>
-
+<!--     <div>
+        <a *ngFor="let note of notes"
+            routerLink="display/{{note.id}}"
+        >
+        <span>{{note.title}}</span>
+        </a>
+    </div> -->
 </div>
 
-<app-compose></app-compose>
+<div>
+    <router-outlet></router-outlet>
+</div>

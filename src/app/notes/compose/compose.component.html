@@ -1,16 +1,17 @@
-<h1>Compose a Beautiful Note!</h1>
+
 <form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <h1>Compose a new Note</h1>
     <label for="title">Title</label>
-    <input formControlName="title" id="title" placehoder="Title for Note..." type="text"/>
+    <input formControlName="title" id="title" placeholder="Title for Note..." type="text"/>
 
     <label for="date">Date</label>
-    <input formControlName="date" id="date" placehoder="DD-MM-YY"/>
+    <input formControlName="date" id="date" placeholder="DD-MM-YY"/>
 
     <label for="body">My Note</label>
     <textarea id="body" rows="6" cols="100"
         formControlName="body"
         placeholder="Your is a grate writer!"></textarea>
-
+        <button id="submitter" (click)="toBrowse()" type="submit">Cancel & Return to Browse</button>
     <button id="submitter" [disabled]="noteForm.invalid" type="submit">Submit Epic Writing</button>
 </form>
 

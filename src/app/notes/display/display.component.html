@@ -1,0 +1,41 @@
+
+<form [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <h1>{{noteForm.controls['title'].value}}</h1>
+    <label for="title">Title</label>
+    <input formControlName="title" id="title" placehoder="Title for Note..." type="text"/>
+
+    <label for="date">Date</label>
+    <input formControlName="date" id="date" placehoder="DD-MM-YY"/>
+
+    <label for="body">My Note</label>
+    <textarea id="body" rows="6" cols="100"
+        formControlName="body"
+        placeholder="Your is a grate writer!"></textarea>
+
+    <button id="navigator" (click)="goBack()">Return to Browse</button>
+    <button id="delete" (click)="deleteNote(noteForm.controls['id'].value!)">Delete</button>
+    <button id="submitter" [disabled]="noteForm.invalid" type="submit">Submit Epic Writing</button>
+</form>
+
+<hr />
+<p>Values: {{ noteForm.value | json }}</p>
+<p>Errors: {{ noteForm.errors | json }}</p>
+<p>Valid: {{ noteForm.valid | json }}</p>
+
+
+<!--
+    Using in memory web api, i defined a database in memory.
+
+    local-data-service has that data, which is pulled
+    into notesService via http
+    the notes are then accessed by the various browse/display/edit functions
+    via network requests and observables.
+
+    conditional routing is based off of each note's unique id
+    display shows and allows editing of a note using http.put
+
+    needs:
+    - fix navigating to paths that are invalid
+    - clean up 'browse' component; decide what to show by default
+
+-->

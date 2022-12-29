@@ -13,7 +13,7 @@ import { BrowseComponent } from './notes/browse/browse.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

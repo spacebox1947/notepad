@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NotesRoutingModule } from './notes-routing.module';
+
 import { ComposeComponent } from './compose/compose.component';
 import { BrowseComponent } from './browse/browse.component';
-
-import { NotesService } from './notes.service';
-
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DisplayComponent } from './display/display.component';
 
 
 @NgModule({
   declarations: [
     ComposeComponent,
-    BrowseComponent
+    BrowseComponent,
+    DisplayComponent
   ],
   imports: [
     CommonModule,
     NotesRoutingModule,
     ReactiveFormsModule,
     FormsModule
+  ],
+  exports: [
+    BrowseComponent
   ]
 })
 export class NotesModule { }

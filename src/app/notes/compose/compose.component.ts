@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../notes.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Note } from 'src/app/note';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-compose',
@@ -9,6 +11,7 @@ import { Note } from 'src/app/note';
   styleUrls: ['./compose.component.css']
 })
 export class ComposeComponent implements OnInit {
+  
   noteForm = new FormGroup({
     id: new FormControl(''),
     title: new FormControl('', [
@@ -25,24 +28,30 @@ export class ComposeComponent implements OnInit {
   });
 
 
-  constructor(private notesService: NotesService) { }
+  constructor(
+    private notesService: NotesService,
+    private router: Router,
+    private location: Location) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
-    console.log('Click!');
-    console.log(
-      this.noteForm.get('title')?.value,
-      this.noteForm.get('date')?.value,
-      this.noteForm.get('body')?.value,
-    );
-    
     this.notesService.addNote(
       this.noteForm.get('title')?.value!,
       this.noteForm.get('date')?.value!,
       this.noteForm.get('body')?.value!
-    );
+    ).subscribe(note => {
+        console.log(note)
+        this.goBack()
+    });
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  toBrowse(): void {
+    this.router.navigateByUrl('/browse');
   }
 
 }

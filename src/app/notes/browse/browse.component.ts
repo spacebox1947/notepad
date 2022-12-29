@@ -9,11 +9,20 @@ import { Note } from 'src/app/note';
 })
 export class BrowseComponent implements OnInit {
   notes: Note[] = [];
+  displayingNote: boolean = false;
 
-  constructor(private noteService: NotesService) { }
-
-  ngOnInit(): void {
-    this.notes = this.noteService.getNotes();
+  constructor(private notesService: NotesService) {
+    this.getNotes();
   }
 
+  ngOnInit(): void {
+  }
+
+  getNotes() {
+    this.notesService.getNotes().subscribe(
+      // display a subset of notes
+      //notes => this.notes = notes.slice()
+      notes => this.notes = notes
+    );
+  }
 }
