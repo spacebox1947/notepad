@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', component: BrowseComponent,
     children: [
       { path: 'display/:id', component: DisplayComponent},
-      { path: 'compose', component: ComposeComponent},
+      /* { path: 'compose', component: ComposeComponent}, */
       { path: '**', redirectTo: '/browse', pathMatch: 'full'}
     ]
   }
